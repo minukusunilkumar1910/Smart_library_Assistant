@@ -1,0 +1,207 @@
+/* src/pages/Dashboard.css
+   Scoped only to the dashboard to avoid affecting other pages.
+   Dark-only theme, responsive, clean and minimal.
+*/
+
+.dashboard-page {
+    --bg-1: #071025;
+    --bg-2: #0a1626;
+    --card-bg: #0f2436;
+    --card-border: rgba(255, 255, 255, 0.04);
+    --muted: #9fb6d9;
+    --accent: #2f6ae6;
+    --accent-2: #5b8cff;
+    color: #eaf3ff;
+    background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Header (hero) — subtle bookish feel without images */
+.dashboard-page .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 22px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, rgba(47, 90, 226, 0.12), rgba(91, 140, 255, 0.04));
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 8px 30px rgba(2, 6, 20, 0.55);
+}
+
+/* Title block inside dashboard only */
+.dashboard-page .dashboard-header h1 {
+    margin: 0;
+    font-size: 1.45rem;
+    letter-spacing: -0.2px;
+    color: #f5fbff;
+    font-weight: 800;
+}
+
+.dashboard-page .dashboard-header p {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+/* Hide the light/dark toggle button visually (JS still exists but hidden) */
+.dashboard-page .mode-toggle {
+    display: none !important;
+}
+
+/* Cards layout (summary cards only) */
+.dashboard-page .cards {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 18px;
+}
+
+/* Dashboard-scoped card */
+.dashboard-page .card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 8px 22px rgba(5, 10, 20, 0.55);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+    text-align: center;
+    color: #eaf3ff;
+}
+
+.dashboard-page .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 36px rgba(2, 6, 20, 0.65);
+}
+
+.dashboard-page .card h2 {
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #f2f8ff;
+}
+
+.dashboard-page .card .muted {
+    font-size: 0.92rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+
+/* Big numeric value in card */
+.dashboard-page .card .card-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #f5fbff;
+    margin: 10px 0;
+}
+
+/* small meta line */
+.dashboard-page .card .muted-small {
+    color: #9fb6d9;
+    font-size: 0.85rem;
+    margin-bottom: 14px;
+}
+
+/* Buttons scoped to dashboard */
+.dashboard-page .btn {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    box-shadow: 0 8px 18px rgba(47, 90, 226, 0.18);
+    transition: transform 160ms ease, box-shadow 160ms ease;
+    text-decoration: none;
+}
+
+.dashboard-page .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 22px rgba(47, 90, 226, 0.22);
+}
+
+/* smaller variant */
+.dashboard-page .btn.small {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+
+/* make CTA full width on tiny screens for easier tap */
+@media (max-width: 420px) {
+    .dashboard-page .btn {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+}
+
+/* subtle footer hint area in dashboard — small and scoped */
+.dashboard-page .footer-note {
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Responsive tweaks */
+@media (max-width: 960px) {
+    .dashboard-page {
+        padding: 16px;
+    }
+
+    .dashboard-page .dashboard-header {
+        padding: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .dashboard-page .dashboard-header h1 {
+        font-size: 1.25rem;
+    }
+}
+
+/* ensure typography inside dashboard is scoped */
+.dashboard-page h1,
+.dashboard-page h2,
+.dashboard-page p {
+    line-height: 1.2;
+}
+
+/* Accessibility focus */
+.dashboard-page .btn:focus {
+    outline: 3px solid rgba(91, 140, 255, 0.18);
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+/* Prevent global classes leakage: ensure we don't unintentionally style generic elements outside dashboard */
+/* e.g., default links inside dashboard */
+.dashboard-page a {
+    color: inherit;
+}
+
+/* final small polish for small devices */
+@media (max-width: 520px) {
+    .dashboard-page .cards {
+        gap: 12px;
+    }
+
+    .dashboard-page .card {
+        padding: 14px;
+        border-radius: 10px;
+    }
+
+    .dashboard-page .card h2 {
+        font-size: 1rem;
+    }
+
+    .dashboard-page .card .card-value {
+        font-size: 1.6rem;
+    }
+}
