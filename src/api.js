@@ -1,6 +1,8 @@
 // single-file mock API. Use VITE_USE_MOCK=1 to enable mock. 
 // When backend ready, change env and replace mockHttp with real fetch calls.
 
+
+
 const USE_MOCK = import.meta.env.VITE_USE_MOCK === "1";
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:4000";
 
